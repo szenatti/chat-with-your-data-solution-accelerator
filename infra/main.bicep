@@ -5,6 +5,9 @@ targetScope = 'subscription'
 @description('Name of the the environment which is used to generate a short unique hash used in all resources.')
 param environmentName string
 
+@description('Name of the resource group which is used to deploy all resources.')
+param resourceGroupName string
+
 param resourceToken string = toLower(uniqueString(subscription().id, environmentName, location))
 
 @description('Location for all resources.')
