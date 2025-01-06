@@ -14,7 +14,15 @@
       "minLength": 1,
       "maxLength": 20,
       "metadata": {
-        "description": "Name of the the environment which is used to generate a short unique hash used in all resources."
+        "description": "Name of the environment which is used to generate a short unique hash used in all resources."
+      }
+    },
+    "resourceGroupName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength":50,
+      "metadata": {
+        "description": "Name of the resource group which is used to deploy all resources."
       }
     },
     "resourceToken": {
@@ -646,7 +654,7 @@
     "tags": {
       "azd-env-name": "[parameters('environmentName')]"
     },
-    "rgName": "[format('rg-{0}', parameters('environmentName'))]",
+    "rgName": "[parameters('resourceGroupName')]",
     "keyVaultName": "[format('kv-{0}', parameters('resourceToken'))]",
     "baseUrl": "https://raw.githubusercontent.com/Azure-Samples/chat-with-your-data-solution-accelerator/main/",
     "azureOpenAIModelInfo": "[string(createObject('model', parameters('azureOpenAIModel'), 'modelName', parameters('azureOpenAIModelName'), 'modelVersion', parameters('azureOpenAIModelVersion')))]",
